@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Sharma</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0f0f0f;
+      --surface: #1a1a1a;
+      --border:  #2a2a2a;
+      --text:    #e8e8e8;
+      --muted:   #888;
+      --accent:  #7c9ef8;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    header, main, footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      padding-top: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    main { padding-top: 3rem; }
+
+    section { margin-bottom: 3.5rem; }
+
+    footer {
+      padding-top: 1.5rem;
+      padding-bottom: 3rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── Header ── */
+    header h1 { font-size: 2rem; font-weight: 600; letter-spacing: -0.5px; }
+    header .tagline { color: var(--muted); margin-top: 0.4rem; }
+
+    .header-links { margin-top: 0.75rem; display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .header-links a { color: var(--muted); font-size: 0.9rem; }
+    .header-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Section headings ── */
+    section h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Intro ── */
+    #intro p { color: var(--text); }
+    #intro p + p { margin-top: 0.85rem; }
+
+    /* ── Quote widget ── */
+    .quote-widget {
+      border-left: 2px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 3.5rem;
+      min-height: 4.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .quote-widget blockquote {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--text);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .quote-widget blockquote.visible { opacity: 1; }
+
+    .quote-widget cite {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: normal;
+      margin-top: 0.4rem;
+    }
+
+    /* ── Currently ── */
+    .currently-list { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .currently-item {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .currently-label { color: var(--muted); }
+    .currently-value { color: var(--text); }
+
+    /* ── Daily concept ── */
+    .concept-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      transition: opacity 0.4s ease;
+    }
+
+    .concept-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .concept-card h3 { font-size: 1rem; font-weight: 600; }
+
+    .concept-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(124, 158, 248, 0.1);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+    }
+
+    .concept-card p { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; }
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Aditya Sharma</h1>
+    <p class="tagline"><!-- tagline / one-liner goes here --></p>
+    <div class="header-links">
+      <a href="mailto:adi.1129311@gmail.com">Email</a>
+      <a href="https://github.com/adi293" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/adi293/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="intro">
+      <h2>Introduction</h2>
+      <p>I'm a Lead Data Scientist at Sigmoid, where I've spent nearly four years building forecasting systems, recommendation engines, and deep learning and generative AI solutions — mostly for large enterprises across the Fortune 500.</p>
+      <p>I'm drawn to problems that sit at the intersection of rigorous modeling and scalable engineering, which is what keeps me interested in both the ML side and the systems side of data science.</p>
+      <p>Outside work, I play guitar, swim, and follow football with probably too much investment — I support Man City and Atlético Madrid, which makes for an interesting season every year.</p>
+    </section>
+
+    <!-- Quote widget sits between intro and currently -->
+    <div class="quote-widget" aria-live="polite">
+      <blockquote id="quote-text"></blockquote>
+    </div>
+
+    <section id="lately">
+      <h2>Lately</h2>
+      <div class="currently-list">
+        <div class="currently-item">
+          <span class="currently-label">Reading</span>
+          <span class="currently-value">
+            <em>Designing Data-Intensive Applications</em> — Martin Kleppmann
+          </span>
+        </div>
+        <div class="currently-item">
+          <span class="currently-label">Building</span>
+          <span class="currently-value"><!-- what you're working on --></span>
+        </div>
+        <div class="currently-item">
+          <span class="currently-label">Learning</span>
+          <span class="currently-value"><!-- a skill, tool, or topic --></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="tidbit">
+      <h2>Tidbit</h2>
+      <div class="concept-card" id="concept-card">
+        <!-- filled by JS -->
+      </div>
+    </section>
+
+    <section id="focus">
+      <h2>Focus</h2>
+      <p><!-- Add a paragraph or bullets on what you're working on --></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Aditya Sharma &mdash; <span id="year"></span></p>
+  </footer>
+
+  <script>
+    // ── Rotating quotes ──────────────────────────────────────────
+    const quotes = [
+      { text: "All models are wrong, but some are useful.", author: "George Box" },
+      { text: "The most exciting phrase in science is not 'Eureka!' but 'That's funny…'", author: "Isaac Asimov" },
+      { text: "Torture the data long enough and it will confess to anything.", author: "Ronald Coase" },
+      { text: "In God we trust; all others must bring data.", author: "W. Edwards Deming" },
+      { text: "The purpose of computing is insight, not numbers.", author: "Richard Hamming" },
+      { text: "Not all those who wander are lost.", author: "J.R.R. Tolkien" },
+      { text: "A ship in harbour is safe, but that is not what ships are for.", author: "John A. Shedd" },
+      { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+      { text: "What we know is a drop; what we don't know is an ocean.", author: "Isaac Newton" },
+      { text: "It ain't what you don't know that gets you into trouble. It's what you know for sure that just ain't so.", author: "Mark Twain" },
+    ];
+
+    const quoteEl = document.getElementById('quote-text');
+    let currentIndex = Math.floor(Math.random() * quotes.length);
+
+    function showQuote(index) {
+      const q = quotes[index];
+      quoteEl.classList.remove('visible');
+      setTimeout(() => {
+        quoteEl.innerHTML = `"${q.text}" <cite>— ${q.author}</cite>`;
+        quoteEl.classList.add('visible');
+      }, 600);
+    }
+
+    function nextQuote() {
+      currentIndex = (currentIndex + 1) % quotes.length;
+      showQuote(currentIndex);
+    }
+
+    // initial render
+    showQuote(currentIndex);
+
+    // rotate every 15–20 seconds (random interval)
+    function scheduleNext() {
+      const delay = 15000 + Math.random() * 5000;
+      setTimeout(() => { nextQuote(); scheduleNext(); }, delay);
+    }
+    scheduleNext();
+
+
+    // ── Tidbit ───────────────────────────────────────────────────
+    let tidbits = [];
+    let tidbitsIndex = 0;
+    const conceptCard = document.getElementById('concept-card');
+
+    function renderTidbit(concept) {
+      conceptCard.style.opacity = 0;
+      setTimeout(() => {
+        conceptCard.innerHTML = `
+          <div class="concept-meta">
+            <h3>${concept.term}</h3>
+            <span class="concept-tag">${concept.category}</span>
+          </div>
+          <p>${concept.body}</p>
+        `;
+        conceptCard.style.opacity = 1;
+      }, 400);
+    }
+
+    function nextTidbit() {
+      tidbitsIndex = (tidbitsIndex + 1) % tidbits.length;
+      renderTidbit(tidbits[tidbitsIndex]);
+    }
+
+    fetch('concepts.json')
+      .then(r => r.json())
+      .then(data => {
+        tidbits = data;
+        tidbitsIndex = Math.floor(Math.random() * tidbits.length);
+        renderTidbit(tidbits[tidbitsIndex]);
+        setInterval(nextTidbit, 5 * 60 * 1000);
+      });
+
+
+    // ── Footer year ──────────────────────────────────────────────
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

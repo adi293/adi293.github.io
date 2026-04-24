@@ -1,0 +1,77 @@
+[
+  {
+    "term": "Central Limit Theorem",
+    "category": "Statistics",
+    "body": "The average of many independent random variables converges to a normal distribution — regardless of the original distribution. It's why the bell curve appears everywhere, from test scores to measurement errors."
+  },
+  {
+    "term": "Bayesian Updating",
+    "category": "Probability",
+    "body": "Start with a prior belief, observe evidence, update to a posterior. Bayes' theorem formalizes how rational agents should revise beliefs — prior × likelihood, then normalize."
+  },
+  {
+    "term": "The Birthday Problem",
+    "category": "Probability Puzzle",
+    "body": "In a room of just 23 people, there's a ~50% chance two share a birthday. By 70 people it's 99.9%. Our intuition drastically underestimates how quickly collision probabilities grow."
+  },
+  {
+    "term": "Replication Lag",
+    "category": "Data-Intensive Apps",
+    "body": "In leader-follower replication, followers may lag behind the leader. Reads from a stale follower can return outdated data — a key trade-off when scaling reads horizontally."
+  },
+  {
+    "term": "P-value",
+    "category": "Statistics",
+    "body": "The probability of observing data at least as extreme as yours, assuming the null hypothesis is true. It does not tell you the probability the null is true — a very common misreading."
+  },
+  {
+    "term": "The Monty Hall Problem",
+    "category": "Probability Puzzle",
+    "body": "Switching doors after the host reveals a goat wins 2/3 of the time. Sticking wins only 1/3. Your initial pick was made when all three doors were uncertain; new information changes the odds."
+  },
+  {
+    "term": "Write-Ahead Log (WAL)",
+    "category": "Data-Intensive Apps",
+    "body": "Before any change is written to the data file, it's appended to a log. On crash recovery, the log is replayed. WAL is the foundation of durability in most relational databases."
+  },
+  {
+    "term": "Simpson's Paradox",
+    "category": "Statistics",
+    "body": "A trend that appears in several groups of data can reverse or disappear when the groups are combined. Always ask which confounding variable might be lurking behind an aggregate statistic."
+  },
+  {
+    "term": "CAP Theorem",
+    "category": "Data-Intensive Apps",
+    "body": "A distributed system can guarantee at most two of: Consistency, Availability, Partition tolerance. Since network partitions are unavoidable, real systems trade off between C and A."
+  },
+  {
+    "term": "Law of Large Numbers",
+    "category": "Probability",
+    "body": "As sample size grows, the sample mean converges to the true expected value. Gambling houses rely on this: over enough rounds, house edge becomes near-certain profit."
+  },
+  {
+    "term": "Survivor Bias",
+    "category": "Statistics",
+    "body": "We study the survivors because the failures have vanished from the data. WWII planes were reinforced where returning aircraft showed damage — the missing planes took hits elsewhere."
+  },
+  {
+    "term": "Consistent Hashing",
+    "category": "Data-Intensive Apps",
+    "body": "A technique for distributing keys across nodes so that when a node is added or removed, only a fraction of keys need to move. Essential for elastic scaling in distributed caches and databases."
+  },
+  {
+    "term": "Regression to the Mean",
+    "category": "Statistics",
+    "body": "After an extreme measurement, the next tends to be closer to average — not because of any intervention, but pure statistics. It's why 'slumps' often self-correct and why we over-credit coaches."
+  },
+  {
+    "term": "Expected Value",
+    "category": "Probability",
+    "body": "The probability-weighted average of all possible outcomes. A lottery ticket with a $1 expected value for a $2 price is a bad bet every time — even if one ticket once wins millions."
+  },
+  {
+    "term": "Two-Phase Commit (2PC)",
+    "category": "Data-Intensive Apps",
+    "body": "A protocol for atomic distributed transactions: coordinator asks all nodes to prepare (phase 1), then commits only if all agree (phase 2). Consistent but blocks if the coordinator crashes mid-way."
+  }
+]
