@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aditya Sharma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,7 +22,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 1rem;
       line-height: 1.7;
     }
@@ -53,7 +56,16 @@
     }
 
     /* ── Header ── */
-    header h1 { font-size: 2rem; font-weight: 600; letter-spacing: -0.5px; }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #e8e8e8 0%, #7c9ef8 60%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
     header .tagline { color: var(--muted); margin-top: 0.4rem; }
 
     .header-links { margin-top: 0.75rem; display: flex; gap: 1.25rem; flex-wrap: wrap; }
@@ -69,6 +81,23 @@
       color: var(--muted);
       margin-bottom: 1.25rem;
     }
+
+    /* ── Scroll animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .beliefs-list li.fade-up:nth-child(2) { transition-delay: 0.08s; }
+    .beliefs-list li.fade-up:nth-child(3) { transition-delay: 0.16s; }
+    .beliefs-list li.fade-up:nth-child(4) { transition-delay: 0.24s; }
+    .beliefs-list li.fade-up:nth-child(5) { transition-delay: 0.32s; }
 
     /* ── Intro ── */
     #intro p { color: var(--text); }
@@ -115,6 +144,85 @@
 
     .currently-label { color: var(--muted); }
     .currently-value { color: var(--text); }
+
+    /* ── Beliefs ── */
+    .beliefs-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .beliefs-list li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-left: 1rem;
+      border-left: 1px solid var(--border);
+      line-height: 1.6;
+    }
+
+    .beliefs-list li strong { color: var(--text); }
+
+    /* ── On my mind ── */
+    #on-my-mind p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── Writing ── */
+    .writing-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .writing-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .writing-item h3 { font-size: 0.95rem; font-weight: 500; color: var(--text); }
+    .writing-item p  { font-size: 0.85rem; color: var(--muted); margin-top: 0.4rem; }
+
+    .status-tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1rem 0.45rem;
+    }
+
+    /* ── Goals ── */
+    .goals-year {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .goals-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .goals-list li {
+      font-size: 0.9rem;
+      color: var(--text);
+      display: flex;
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+
+    .goals-list li::before {
+      content: "—";
+      color: var(--muted);
+      flex-shrink: 0;
+    }
 
     /* ── Daily concept ── */
     .concept-card {
@@ -164,19 +272,61 @@
 
   <main>
 
-    <section id="intro">
+    <section id="intro" class="fade-up">
       <h2>Introduction</h2>
       <p>I'm a Lead Data Scientist at Sigmoid, where I've spent nearly four years building forecasting systems, recommendation engines, and deep learning and generative AI solutions — mostly for large enterprises across the Fortune 500.</p>
       <p>I'm drawn to problems that sit at the intersection of rigorous modeling and scalable engineering, which is what keeps me interested in both the ML side and the systems side of data science.</p>
       <p>Outside work, I play guitar, swim, and follow football with probably too much investment — I support Man City and Atlético Madrid, which makes for an interesting season every year.</p>
     </section>
 
-    <!-- Quote widget sits between intro and currently -->
+    <section id="beliefs" class="fade-up">
+      <h2>Beliefs</h2>
+      <ul class="beliefs-list">
+        <li class="fade-up"><strong>Know a few things deeply enough to have an opinion on them.</strong></li>
+        <li class="fade-up"><strong>Clarity is the hardest thing to build</strong> — and the most transferable.</li>
+        <li class="fade-up"><strong>Original contribution, however small, is worth more than polished repetition.</strong></li>
+        <li class="fade-up"><strong>Technical rigor and business judgment are both learnable</strong> — neither is optional.</li>
+        <li class="fade-up"><strong>Confidence follows action,</strong> not the other way around.</li>
+      </ul>
+    </section>
+
+    <section id="on-my-mind" class="fade-up">
+      <h2>On my mind</h2>
+      <p>Figuring out what the bigger picture looks like — and learning to trust that clarity comes through doing, not waiting.</p>
+    </section>
+
+    <section id="focus" class="fade-up">
+      <h2>Focus</h2>
+      <p>I'm currently exploring foundational time series models — understanding how they work and mapping out the forecasting scenarios where they hold up well compared to other classical and separately trained models, with the goal of writing up my findings.</p>
+    </section>
+
+    <section id="writing" class="fade-up">
+      <h2>Writing</h2>
+      <div class="writing-list">
+        <div class="writing-item">
+          <h3>Foundational Time Series Models — When Do They Hold Up?</h3>
+          <span class="status-tag">In progress</span>
+          <p>A comparative look at classical and foundational time series approaches across different forecasting scenarios.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals" class="fade-up">
+      <h2>Goals</h2>
+      <p class="goals-year">2026</p>
+      <ul class="goals-list">
+        <li>Make at least one research contribution — a writeup, finding, or paper worth putting out.</li>
+        <li>Own work fully — do less, go deeper, and exceed what the role expects.</li>
+        <li>Start investing deliberately — move from saving to building a financial plan.</li>
+      </ul>
+    </section>
+
+    <!-- Quote widget -->
     <div class="quote-widget" aria-live="polite">
       <blockquote id="quote-text"></blockquote>
     </div>
 
-    <section id="lately">
+    <section id="lately" class="fade-up">
       <h2>Lately</h2>
       <div class="currently-list">
         <div class="currently-item">
@@ -196,16 +346,11 @@
       </div>
     </section>
 
-    <section id="tidbit">
+    <section id="tidbit" class="fade-up">
       <h2>Tidbit</h2>
       <div class="concept-card" id="concept-card">
         <!-- filled by JS -->
       </div>
-    </section>
-
-    <section id="focus">
-      <h2>Focus</h2>
-      <p><!-- Add a paragraph or bullets on what you're working on --></p>
     </section>
 
   </main>
@@ -290,6 +435,18 @@
         setInterval(nextTidbit, 5 * 60 * 1000);
       });
 
+
+    // ── Scroll animations ────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
     // ── Footer year ──────────────────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();
